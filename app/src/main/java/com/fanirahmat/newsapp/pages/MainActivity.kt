@@ -2,38 +2,40 @@ package com.fanirahmat.newsapp.pages
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import com.fanirahmat.newsapp.R
+import com.fanirahmat.newsapp.databinding.ActivityMainBinding
+import com.fanirahmat.newsapp.pages.fragments.HomeFragment
+import com.fanirahmat.newsapp.pages.fragments.SearchFragment
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-//
-//        val rvNews = findViewById<RecyclerView>(R.id.rv_news)
-//
-//        ApiConfig.getService().getAllNews(
-//            ApiConfig.apiKey,10,1, "Indonesia"
-//        ).enqueue(object : Callback<NewsBase>{
-//            override fun onResponse(call: Call<NewsBase>, response: Response<NewsBase>) {
-//                if (response.isSuccessful) {
-//                    val data = response.body()
-//                    val listNews = data?.articles
-//                    val adapter = NewsItemAdapter(listNews as List<ArticlesItem>)
-//
-//                    adapter.run {
-//                        rvNews.adapter = this
-//                        rvNews.layoutManager = LinearLayoutManager(this@MainActivity, VERTICAL , false)
-//
-//                        notifyDataSetChanged()
-//                    }
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<NewsBase>, t: Throwable) {
-//
-//            }
-//
-//        })
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        replaceFragment(HomeFragment())
 
+        binding.bottomNavigationView.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.home -> replaceFragment(HomeFragment())
+                R.id.search -> replaceFragment(SearchFragment())
+                else -> {
+
+                }
+            }
+            true
+        }
+
+
+    }
+
+     private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout, fragment)
+        fragmentTransaction.commit()
     }
 }
