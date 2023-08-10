@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fanirahmat.newsapp.R
+import com.fanirahmat.newsapp.helper.DateFormatter
 import com.fanirahmat.newsapp.models.ArticlesItem
 
 class NewsItemAdapter(var list: List<ArticlesItem>) : RecyclerView.Adapter<NewsItemAdapter.ViewHolder>() {
@@ -36,7 +37,9 @@ class NewsItemAdapter(var list: List<ArticlesItem>) : RecyclerView.Adapter<NewsI
         val dict = list[position]
         holder.tvTitle.text = dict.title
         holder.tvSource.text = "${dict.author}, ${dict.source?.name}"
-        holder.tvPublishDate.text = dict.publishedAt
+
+        val publishDate = dict.publishedAt?.let { DateFormatter().convertStringToDate(it, "yyyy-MM-dd") }
+        holder.tvPublishDate.text = publishDate?.let { DateFormatter().formatDateToDayAndDate(it) }
 
         Glide.with(holder.ivNews)
             .load(dict.urlToImage)
