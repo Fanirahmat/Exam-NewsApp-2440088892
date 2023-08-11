@@ -56,6 +56,13 @@ class NewsItemAdapter(
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, DetailNewsActivity::class.java)
+            intent.putExtra("title", dict.title)
+            intent.putExtra("source", dict.source?.name)
+            intent.putExtra("author", dict.author)
+            intent.putExtra("publishDate", dict.publishedAt)
+            intent.putExtra("urlImage", dict.urlToImage)
+            intent.putExtra("content", dict.content)
+            intent.putExtra("url", dict.url)
             context.startActivity(intent)
         }
     }

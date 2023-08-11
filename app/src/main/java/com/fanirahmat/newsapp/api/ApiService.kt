@@ -14,4 +14,12 @@ interface ApiService {
         @Query("page") page: Int?,
         @Query("q") q: String,
     ): Call<NewsBase>
+
+    @GET("top-headlines")
+    fun getAllTopHeadlineNews(
+        @Query("apiKey") apiKey: String,
+        @Query("pageSize") pageSize: Int?,
+        @Query("page") page: Int?,
+        @Query("country") country: String,
+    ): Call<NewsBase>
 }
