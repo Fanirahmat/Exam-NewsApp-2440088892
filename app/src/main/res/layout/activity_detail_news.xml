@@ -59,7 +59,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="BBC News"
-                android:textColor="@color/material_dynamic_neutral60"
                 app:layout_constraintEnd_toEndOf="@+id/tv_detail_title_news"
                 app:layout_constraintStart_toStartOf="@+id/tv_detail_title_news"
                 app:layout_constraintTop_toBottomOf="@+id/tv_detail_title_news" />
@@ -78,7 +77,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="John Doe"
-                android:textColor="@color/material_dynamic_neutral60"
                 app:layout_constraintEnd_toEndOf="@+id/tv_detail_publish_date"
                 app:layout_constraintStart_toStartOf="@+id/tv_detail_publish_date"
                 app:layout_constraintTop_toBottomOf="@+id/tv_detail_publish_date" />
@@ -102,7 +100,8 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="20dp"
                 android:text="Learn More..."
-                android:textColor="@color/material_dynamic_primary60"
+
+                android:textColor="@color/colorTextLink"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/tv_detail_content"
                 app:layout_constraintStart_toStartOf="@+id/tv_detail_content"
